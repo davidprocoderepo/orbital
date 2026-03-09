@@ -1,0 +1,25 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import JobCard from "../../components/JobCard.astro";
+import jobs from "../../content/jobs-list.ts";
+---
+
+
+<MainLayout>
+	<div class="container p-10">
+		<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+			{
+				jobs.map((job) => (
+					<JobCard
+						title={job.title}
+						company={job.company}
+						location={job.location}
+						salary={job.salary}
+						image={job.image}
+						link={job.link}
+					/>
+				))
+			}
+		</div>
+	</div>
+</MainLayout>

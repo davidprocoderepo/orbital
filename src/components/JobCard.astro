@@ -1,0 +1,29 @@
+---
+const { title, company, location, salary, image, link = "#" } = Astro.props;
+---
+
+<div
+    class="job-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+>
+    <img
+        src={image}
+        alt={`Vaga na ${company}`}
+        class="w-full h-48 object-cover"
+    />
+    <div class="p-6">
+        <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
+            {title}
+        </h3>
+        <div class="space-y-2 text-gray-600 text-sm">
+            <p class="font-medium">{company}</p>
+            <p>{location}</p>
+            {salary && <p class="text-green-600 font-semibold">{salary}</p>}
+        </div>
+        <a
+            href={link}
+            class="mt-4 inline-block bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition"
+        >
+            Ver oportunidade →
+        </a>
+    </div>
+</div>

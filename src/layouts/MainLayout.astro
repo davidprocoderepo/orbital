@@ -1,0 +1,51 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+
+<!-- Global Metadata -->
+ <!doctype html>
+<html lang="pt-BR" class="scroll-smooth">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Font preloads -->
+    <link
+        rel="preload"
+        href="/fonts/atkinson-regular.woff"
+        as="font"
+        type="font/woff"
+        crossorigin
+    />
+    <link
+        rel="preload"
+        href="/fonts/atkinson-bold.woff"
+        as="font"
+        type="font/woff"
+        crossorigin
+    />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content={SITE_TITLE} />
+    <meta name="description" content={SITE_DESCRIPTION} />
+
+    <title>{SITE_TITLE}</title>
+
+    <body class="min-h-screen flex flex-col bg-gray-950 text-gray-100">
+        <Header />
+        <main>
+            <slot />
+        </main>
+        <Footer />
+    </body>
+</html>
